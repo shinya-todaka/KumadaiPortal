@@ -8,15 +8,15 @@
 import Foundation
 import Kanna
 
-class KumadaiPortal: NSObject {
+public class KumadaiPortal: NSObject {
     
-    static let shared = KumadaiPortal()
+    public static let shared = KumadaiPortal()
     
     private let session = APISession()
     
     private override init() {}
     
-    func login(username: String, password: String, completion: @escaping (PortalError?) -> Void) {
+    public func login(username: String, password: String, completion: @escaping (PortalError?) -> Void) {
         self.getIdpJsessionId() { (error) in
             if let error = error {
                 print(error)
@@ -61,7 +61,7 @@ class KumadaiPortal: NSObject {
         }
     }
     
-    func getTimeTable(completion: @escaping (CourseResponse?, Error?) -> Void) {
+    public func getTimeTable(completion: @escaping (CourseResponse?, Error?) -> Void) {
         self.getJsesionIDForTimeTable() { error in
             if let error = error {
                 completion(nil, error)
@@ -74,7 +74,7 @@ class KumadaiPortal: NSObject {
         }
     }
     
-    func getSeiseki(completion: @escaping ([Grade]?, Error?) -> Void) {
+    public func getSeiseki(completion: @escaping ([Grade]?, Error?) -> Void) {
         let url = "https://kuss.kumamoto-u.ac.jp/ssk00.php"
         let parameters = ["lang": "ja"]
         session.call(url: url, parameters: parameters) { (data, response, error) in

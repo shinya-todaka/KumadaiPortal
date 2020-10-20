@@ -19,8 +19,8 @@ class APISession: NSObject {
         case notfollow
     }
     
-    var redirect: Redirect = .follow
-    var session: URLSession = .shared
+    private var redirect: Redirect = .follow
+    private var session: URLSession = .shared
     
     override init() {
         super.init()

@@ -8,7 +8,7 @@
 import Foundation
 
 extension HTTPCookieStorage {
-    subscript(domain domain: String,path path: String, name name: String) -> HTTPCookie?{
+    public subscript(domain domain: String,path path: String, name name: String) -> HTTPCookie?{
         guard let cookies = Self.shared.cookies else {
             return nil
         }

@@ -5,9 +5,7 @@
 //  Created by 戸高新也 on 2020/10/19.
 //
 
-import Foundation
-
-struct Grade {
+public struct Grade {
     let no: Int
     let subjectName: String
     let unitCount: Int
@@ -15,14 +13,14 @@ struct Grade {
     let evaluation: Evaluation
     let result: Bool
     
-    enum Evaluation: String {
+    public enum Evaluation: String {
         case excellent = "優"
         case good = "良"
         case passing = "可"
         case failing = "不可"
     }
     
-    init?(no: String, subjectName: String, unitCount: String, yearAndSemester: String, evaluation: String, result: String) {
+    public init?(no: String, subjectName: String, unitCount: String, yearAndSemester: String, evaluation: String, result: String) {
         guard let no = Int(no) else {
             return nil
         }

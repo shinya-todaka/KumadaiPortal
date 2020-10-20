@@ -5,9 +5,7 @@
 //  Created by 戸高新也 on 2020/10/19.
 //
 
-import Foundation
-
-struct CourseResponse: Decodable {
+public struct CourseResponse: Decodable {
     let sakaiUri: String
     let moodleUri: String
     let uid: String
@@ -27,7 +25,7 @@ struct CourseResponse: Decodable {
     let courses: Courses
 }
 
-struct Courses: Decodable {
+public struct Courses: Decodable {
     let _2014: Semester?
     let _2015: Semester?
     let _2016: Semester?
@@ -47,7 +45,7 @@ struct Courses: Decodable {
     }
 }
 
-struct Semester: Decodable {
+public struct Semester: Decodable {
     let first: DayOfWeek?
     let second: DayOfWeek?
     
@@ -57,7 +55,7 @@ struct Semester: Decodable {
     }
 }
 
-struct DayOfWeek: Decodable {
+public struct DayOfWeek: Decodable {
      let mon: Period?
      let tue: Period?
      let wed: Period?
@@ -73,7 +71,7 @@ struct DayOfWeek: Decodable {
      }
  }
 
-struct Period: Decodable {
+public struct Period: Decodable {
     let first: [Course]?
     let second: [Course]?
     let third: [Course]?
@@ -93,7 +91,7 @@ struct Period: Decodable {
     }
 }
 
-struct Course: Decodable {
+public struct Course: Decodable {
     let courseId: String
     let name: String
     let lms: Int
