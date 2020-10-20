@@ -72,13 +72,13 @@ public struct Semester: Decodable {
  }
 
 public struct DayOfWeek: Decodable {
-    public let first: [Course]?
-    public let second: [Course]?
-    public let third: [Course]?
-    public let fourth: [Course]?
-    public let fifth: [Course]?
-    public let sixth: [Course]?
-    public let seventh: [Course]?
+    public let first: [Period]?
+    public let second: [Period]?
+    public let third: [Period]?
+    public let fourth: [Period]?
+    public let fifth: [Period]?
+    public let sixth: [Period]?
+    public let seventh: [Period]?
     
     enum CodingKeys: String, CodingKey {
         case first = "1"
@@ -91,7 +91,7 @@ public struct DayOfWeek: Decodable {
     }
 }
 
-public struct Course: Decodable {
+public struct Period: Decodable {
     public let courseId: String
     public let name: String
     public let lms: Int
