@@ -38,38 +38,38 @@ let package = Package(
 
 ``` 
 <key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
+  <dict>
+	  <key>NSExceptionDomains</key>
 		<dict>
-			<key>lecregdb.kumamoto-u.ac.jp</key>
-			<dict>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>shib.kumamoto-u.ac.jp</key>
-			<dict>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>cas.kumamoto-u.ac.jp</key>
-			<dict>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
+		  <key>lecregdb.kumamoto-u.ac.jp</key>
+		  <dict>
+			  <key>NSExceptionRequiresForwardSecrecy</key>
+			  <false/>
+			  <key>NSExceptionMinimumTLSVersion</key>
+			  <string>TLSv1.0</string>
+			  <key>NSExceptionAllowsInsecureHTTPLoads</key>
+			  <true/>
+		  </dict>
+		  <key>shib.kumamoto-u.ac.jp</key>
+		  <dict>
+			  <key>NSExceptionRequiresForwardSecrecy</key>
+			  <false/>
+			  <key>NSExceptionMinimumTLSVersion</key>
+			  <string>TLSv1.0</string>
+			  <key>NSExceptionAllowsInsecureHTTPLoads</key>
+			  <true/>
+		  </dict>
+		  <key>cas.kumamoto-u.ac.jp</key>
+		  <dict>
+			  <key>NSExceptionRequiresForwardSecrecy</key>
+			  <false/>
+			  <key>NSExceptionMinimumTLSVersion</key>
+			  <string>TLSv1.0</string>
+			  <key>NSExceptionAllowsInsecureHTTPLoads</key>
+			  <true/>
+		  </dict>
+	  </dict>
+  </dict>
 ```
 
 2. Login and get some data !
