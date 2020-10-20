@@ -202,16 +202,25 @@ public class KumadaiPortal: NSObject {
                 return
             }
 
-            guard let data = data else { return }
-            guard let html = try? HTML(html: data, encoding: .utf8) else { return }
-
-            let username = html.css("input[name='username']").first!["value"]!
-            let lt = html.css("input[name='lt']").first!["value"]!
-            let execution = html.css("input[name='execution']").first!["value"]!
-            let _eventId = html.css("input[name='_eventId']").first!["value"]!
+            guard let data = data, let html = try? HTML(html: data, encoding: .utf8) else {
+                completion(nil, nil)
+                return
+            }
+            
+            let username = html.css("input[name='username']").first?["value"]
+            let lt = html.css("input[name='lt']").first?["value"]
+            let execution = html.css("input[name='execution']").first?["value"]
+            let _eventId = html.css("input[name='_eventId']").first?["value"]
             let submit = "ログイン"
 
-            let parameters = ["username": username, "lt": lt, "execution": execution, "_eventId": _eventId, "submit": submit]
+            let optionalParameters = { $0.contains(nil) ? nil : $0.compactMap{$0}}([username, lt, execution, _eventId])
+            
+            guard let fourParameters = optionalParameters else {
+                completion(nil, nil)
+                return
+            }
+            
+            let parameters: [String: String] = ["username": fourParameters.first!, "lt": fourParameters[1], "execution": fourParameters[2], "_eventId": fourParameters[3], "submit": submit]
 
             completion(parameters, nil)
         }
