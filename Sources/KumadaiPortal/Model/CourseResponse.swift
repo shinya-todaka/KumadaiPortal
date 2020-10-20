@@ -6,33 +6,33 @@
 //
 
 public struct CourseResponse: Decodable {
-    let sakaiUri: String
-    let moodleUri: String
-    let uid: String
-    let affiliation: Int
-    let lastname: String
-    let sakaiNum: Int
-    let firstname: String
-    let syllabusAuthUri: String
-    let stid: String
-    let ip: String
-    let maharaNum: Int
-    let callback: String
-    let syllabusOldUri: String
-    let maharaUri : String
-    let moodleNum: Int
-    let syllabusModYear: Int
-    let courses: Courses
+    public let sakaiUri: String
+    public let moodleUri: String
+    public let uid: String
+    public let affiliation: Int
+    public let lastname: String
+    public let sakaiNum: Int
+    public let firstname: String
+    public let syllabusAuthUri: String
+    public let stid: String
+    public let ip: String
+    public let maharaNum: Int
+    public let callback: String
+    public let syllabusOldUri: String
+    public let maharaUri : String
+    public let moodleNum: Int
+    public let syllabusModYear: Int
+    public let courses: Courses
 }
 
 public struct Courses: Decodable {
-    let _2014: Semester?
-    let _2015: Semester?
-    let _2016: Semester?
-    let _2017: Semester?
-    let _2018: Semester?
-    let _2019: Semester?
-    let _2020: Semester?
+    public let _2014: Semester?
+    public let _2015: Semester?
+    public let _2016: Semester?
+    public let _2017: Semester?
+    public let _2018: Semester?
+    public let _2019: Semester?
+    public let _2020: Semester?
     
     enum CodingKeys: String, CodingKey {
         case _2014 = "2014"
@@ -46,8 +46,8 @@ public struct Courses: Decodable {
 }
 
 public struct Semester: Decodable {
-    let first: DayOfWeek?
-    let second: DayOfWeek?
+    public let first: DayOfWeek?
+    public let second: DayOfWeek?
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case first = "1"
@@ -56,11 +56,11 @@ public struct Semester: Decodable {
 }
 
 public struct DayOfWeek: Decodable {
-     let mon: Period?
-     let tue: Period?
-     let wed: Period?
-     let thu: Period?
-     let fri: Period?
+     public let mon: Period?
+     public let tue: Period?
+     public let wed: Period?
+     public let thu: Period?
+     public let fri: Period?
      
      enum CodingKeys: String, CodingKey, CaseIterable {
          case mon = "1"
@@ -72,13 +72,13 @@ public struct DayOfWeek: Decodable {
  }
 
 public struct Period: Decodable {
-    let first: [Course]?
-    let second: [Course]?
-    let third: [Course]?
-    let fourth: [Course]?
-    let fifth: [Course]?
-    let sixth: [Course]?
-    let seventh: [Course]?
+    public let first: [Course]?
+    public let second: [Course]?
+    public let third: [Course]?
+    public let fourth: [Course]?
+    public let fifth: [Course]?
+    public let sixth: [Course]?
+    public let seventh: [Course]?
     
     enum CodingKeys: String, CodingKey {
         case first = "1"
@@ -92,7 +92,7 @@ public struct Period: Decodable {
 }
 
 public struct Course: Decodable {
-    let courseId: String
-    let name: String
-    let lms: Int
+    public let courseId: String
+    public let name: String
+    public let lms: Int
 }

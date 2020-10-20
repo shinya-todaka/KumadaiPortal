@@ -6,12 +6,12 @@
 //
 
 public struct Grade {
-    let no: Int
-    let subjectName: String
-    let unitCount: Int
-    let yearAndSemester: String
-    let evaluation: Evaluation
-    let result: Bool
+    public let no: Int
+    public let subjectName: String
+    public let unitCount: Int
+    public let yearAndSemester: String
+    public let evaluation: Evaluation
+    public let result: Bool
     
     public enum Evaluation: String {
         case excellent = "優"
