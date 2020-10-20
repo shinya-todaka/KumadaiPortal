@@ -26,13 +26,13 @@ public struct CourseResponse: Decodable {
 }
 
 public struct Courses: Decodable {
-    public let _2014: Semester?
-    public let _2015: Semester?
-    public let _2016: Semester?
-    public let _2017: Semester?
-    public let _2018: Semester?
-    public let _2019: Semester?
-    public let _2020: Semester?
+    public let _2014: Year?
+    public let _2015: Year?
+    public let _2016: Year?
+    public let _2017: Year?
+    public let _2018: Year?
+    public let _2019: Year?
+    public let _2020: Year?
     
     enum CodingKeys: String, CodingKey {
         case _2014 = "2014"
@@ -45,9 +45,9 @@ public struct Courses: Decodable {
     }
 }
 
-public struct Semester: Decodable {
-    public let first: DayOfWeek?
-    public let second: DayOfWeek?
+public struct Year: Decodable {
+    public let first: Semester?
+    public let second: Semester?
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case first = "1"
@@ -55,12 +55,12 @@ public struct Semester: Decodable {
     }
 }
 
-public struct DayOfWeek: Decodable {
-     public let mon: Period?
-     public let tue: Period?
-     public let wed: Period?
-     public let thu: Period?
-     public let fri: Period?
+public struct Semester: Decodable {
+     public let mon: DayOfWeek?
+     public let tue: DayOfWeek?
+     public let wed: DayOfWeek?
+     public let thu: DayOfWeek?
+     public let fri: DayOfWeek?
      
      enum CodingKeys: String, CodingKey, CaseIterable {
          case mon = "1"
@@ -71,7 +71,7 @@ public struct DayOfWeek: Decodable {
      }
  }
 
-public struct Period: Decodable {
+public struct DayOfWeek: Decodable {
     public let first: [Course]?
     public let second: [Course]?
     public let third: [Course]?
