@@ -83,7 +83,7 @@ public struct Week: Decodable {
 }
 
 public struct Semester: Decodable {
-    let week: Week
+    public let week: Week
     
     enum CodingKeys: String, CodingKey {
         case week
