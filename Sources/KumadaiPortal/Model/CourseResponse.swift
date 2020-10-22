@@ -5,7 +5,7 @@
 //  Created by 戸高新也 on 2020/10/19.
 //
 
-public struct CourseResponse: Decodable {
+public struct TimeTableResponse: Decodable {
     public let sakaiUri: String
     public let moodleUri: String
     public let uid: String
@@ -46,41 +46,64 @@ public struct Courses: Decodable {
 }
 
 public struct Year: Decodable {
-    public let first: Semester?
-    public let second: Semester?
+    public var first: Semester?
+    public var second: Semester?
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case first = "1"
         case second = "2"
     }
+    
+    public init(from decoder: Decoder) throws  {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let week = try container.decodeIfPresent(Week.self, forKey: .first) {
+            self.first = Semester(week: week)
+        }
+        
+        if let week = try container.decodeIfPresent(Week.self, forKey: .second) {
+            self.second = Semester(week: week)
+        }
+    }
+}
+
+public struct Week: Decodable {
+    public let mon: Day?
+    public let tue: Day?
+    public let wed: Day?
+    public let thu: Day?
+    public let fri: Day?
+    
+    enum CodingKeys: String, CodingKey {
+        case mon = "1"
+        case tue = "2"
+        case wed = "3"
+        case thu = "4"
+        case fri = "5"
+    }
 }
 
 public struct Semester: Decodable {
-     public let mon: DayOfWeek?
-     public let tue: DayOfWeek?
-     public let wed: DayOfWeek?
-     public let thu: DayOfWeek?
-     public let fri: DayOfWeek?
-     
-     enum CodingKeys: String, CodingKey, CaseIterable {
-         case mon = "1"
-         case tue = "2"
-         case wed = "3"
-         case thu = "4"
-         case fri = "5"
-     }
- }
-
-public struct DayOfWeek: Decodable {
-    public let first: [Period]?
-    public let second: [Period]?
-    public let third: [Period]?
-    public let fourth: [Period]?
-    public let fifth: [Period]?
-    public let sixth: [Period]?
-    public let seventh: [Period]?
+    let week: Week
     
     enum CodingKeys: String, CodingKey {
+        case week
+    }
+    
+    public var timetable: [[Period?]?] {
+        return [week.mon, week.tue, week.wed, week.thu, week.fri].map { $0?.periods }
+    }
+}
+
+public struct Day: Decodable {
+    public var first: Period?
+    public var second: Period?
+    public var third: Period?
+    public var fourth: Period?
+    public var fifth: Period?
+    public var sixth: Period?
+    public var seventh: Period?
+    
+    enum CodingKeys: String, CodingKey, CaseIterable {
         case first = "1"
         case second = "2"
         case third = "3"
@@ -89,9 +112,44 @@ public struct DayOfWeek: Decodable {
         case sixth = "6"
         case seventh = "7"
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let courses = try container.decodeIfPresent([Course].self, forKey: .first) {
+            self.first = Period(courses: courses)
+        }
+        
+        if let courses = try container.decodeIfPresent([Course].self, forKey: .second) {
+            self.second = Period(courses: courses)
+        }
+        
+        if let courses = try container.decodeIfPresent([Course].self, forKey: .third) {
+            self.third = Period(courses: courses)
+        }
+        
+        if let courses = try container.decodeIfPresent([Course].self, forKey: .fourth) {
+            self.fourth = Period(courses: courses)
+        }
+        
+        if let courses = try container.decodeIfPresent([Course].self, forKey: .fifth) {
+            self.fifth = Period(courses: courses)
+        }
+        
+        if let courses = try container.decodeIfPresent([Course].self, forKey: .sixth) {
+            self.sixth = Period(courses: courses)
+        }
+    }
+    
+    public var periods: [Period?] {
+        return [first, second, third, fourth, fifth, sixth, seventh]
+    }
 }
 
 public struct Period: Decodable {
+    let courses: [Course]
+}
+
+public struct Course: Decodable {
     public let courseId: String
     public let name: String
     public let lms: Int
