@@ -146,7 +146,7 @@ public struct Day: Decodable {
 }
 
 public struct Period: Decodable {
-    let courses: [Course]
+    public let courses: [Course]
 }
 
 public struct Course: Decodable {
