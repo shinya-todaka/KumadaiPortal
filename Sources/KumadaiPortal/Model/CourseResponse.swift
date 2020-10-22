@@ -147,10 +147,20 @@ public struct Day: Decodable {
 
 public struct Period: Decodable {
     public let courses: [Course]
+    
+    init(courses: [Course]) {
+        self.courses = courses
+    }
 }
 
 public struct Course: Decodable {
     public let courseId: String
     public let name: String
     public let lms: Int
+    
+    init(courseId: String, name: String, lms: Int) {
+        self.courseId = courseId
+        self.name = name
+        self.lms = lms
+    }
 }
