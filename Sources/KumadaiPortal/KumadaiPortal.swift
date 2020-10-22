@@ -61,7 +61,7 @@ public class KumadaiPortal: NSObject {
         }
     }
     
-    public func getTimeTable(completion: @escaping (CourseResponse?, Error?) -> Void) {
+    public func getTimeTable(completion: @escaping (TimeTableResponse?, Error?) -> Void) {
         self.getJsesionIDForTimeTable() { error in
             if let error = error {
                 completion(nil, error)
@@ -254,7 +254,7 @@ public class KumadaiPortal: NSObject {
         }
     }
     
-    private func _getTimeTable(completion: @escaping (CourseResponse?, Error?) -> Void) {
+    private func _getTimeTable(completion: @escaping (TimeTableResponse?, Error?) -> Void) {
         let url = "http://lecregdb.kumamoto-u.ac.jp/ttapi/rest/open/timetable.json"
         let parameters = ["callback": "", "locale": "ja", "_": "1"]
         
@@ -265,8 +265,8 @@ public class KumadaiPortal: NSObject {
             let jsonData = jsonString.data(using: .utf8)!
             
             do {
-                let coursesResponse = try JSONDecoder().decode(CourseResponse.self, from: jsonData)
-                completion(coursesResponse, nil)
+                let timeTableResponse = try JSONDecoder().decode(TimeTableResponse.self, from: jsonData)
+                completion(timeTableResponse, nil)
             } catch let error {
                 print("cant decode timetable!!!!!: \(error)")
                 completion(nil, error)
