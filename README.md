@@ -10,8 +10,6 @@ swift based [熊大ポータル](http://uportal.kumamoto-u.ac.jp/uPortal/render.
 
 ## Installation 
 
-sorry but only for spm at the moment.
-
 ### Swift Package Manager
 
 Add the following to your `Package.swift`:
