@@ -90,3 +90,8 @@ KumadaiPortal.shared.login(username: YOURUSERNAME, password: YOURPASSWORD) { (er
         }
     }
 }
+```
+
+## Sample 
+
+[KumadaiPortalClient](https://github.com/shinya-todaka/KumadaiPortalClient)
